@@ -333,7 +333,7 @@
 
   async function loadProjects() {
     const sel = document.getElementById('taskProject');
-    sel.innerHTML = '<option value="">-- No project --</option>';
+    sel.innerHTML = '';
     if (!settings.url || !settings.token) return;
     try {
       const resp = await fetch(settings.url + '/api/v1/projects', {
@@ -341,13 +341,19 @@
       });
       if (!resp.ok) throw new Error('HTTP ' + resp.status);
       const projects = await resp.json();
-      (Array.isArray(projects) ? projects : []).forEach(function(p) {
+      const list = Array.isArray(projects) ? projects : [];
+      let defaultSet = false;
+      list.forEach(function(p) {
         const opt = document.createElement('option');
         opt.value = p.id;
         opt.textContent = p.title;
-        if (String(p.id) === settings.defaultProject) opt.selected = true;
+        if (String(p.id) === settings.defaultProject) {
+          opt.selected = true;
+          defaultSet = true;
+        }
         sel.appendChild(opt);
       });
+      if (!defaultSet && sel.options.length > 0) sel.options[0].selected = true;
     } catch(e) {
       sel.innerHTML = '<option value="">Could not load projects</option>';
     }
