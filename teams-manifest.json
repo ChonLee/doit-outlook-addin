@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.17/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.17",
+  "version": "1.0.0",
+  "id": "b3c4d5e6-f7a8-9012-bcde-f34567890123",
+  "developer": {
+    "name": "ChonLee",
+    "websiteUrl": "https://chonlee.github.io/doit-outlook-addin",
+    "privacyUrl": "https://chonlee.github.io/doit-outlook-addin/tab.html",
+    "termsOfUseUrl": "https://chonlee.github.io/doit-outlook-addin/tab.html"
+  },
+  "icons": {
+    "color": "teams-color.png",
+    "outline": "teams-outline.png"
+  },
+  "name": {
+    "short": "Send to Vikunja",
+    "full": "Send to Vikunja - AI Task Creator"
+  },
+  "description": {
+    "short": "Turn messages into Vikunja tasks using AI",
+    "full": "Paste any Teams message, use Claude AI to summarize it into an actionable task, and send it directly to Vikunja."
+  },
+  "accentColor": "#7c6af7",
+  "staticTabs": [
+    {
+      "entityId": "vikunjaTab",
+      "name": "Send to Vikunja",
+      "contentUrl": "https://chonlee.github.io/doit-outlook-addin/tab.html",
+      "websiteUrl": "https://chonlee.github.io/doit-outlook-addin/tab.html",
+      "scopes": ["personal"]
+    }
+  ],
+  "permissions": ["identity"],
+  "validDomains": ["chonlee.github.io"]
+}
